@@ -6,6 +6,7 @@ dotenv.config();
 import cors from "cors";
 import fileUpload from "express-fileupload";
 import cloudinaryConnect from "./utils/cloudinary.js";
+import userRoutes from "./routes/userRoutes.js";
 
 connect();
 const app = express();
@@ -26,11 +27,7 @@ app.use(
 );
 cloudinaryConnect();
 
-// app.use("/user", userRoutes);
-// app.use("/job", jobRoutes);
-// app.use("/proposal", proposalRoutes);
-// app.use("/profile", profileRoutes);
-// app.use("/client", clientRoutes);
+app.use("/user", userRoutes);
 
 const port = process.env.PORT || 5555;
 app.listen(port, () => {
